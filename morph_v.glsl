@@ -9,6 +9,7 @@ in vec4 transform_weight;
 in uvec4 transform_index;
 
 uniform mat4 p3d_TransformTable[100];
+uniform mat3 p3d_NormalMatrix; 
 
 in vec3 p3d_Normal;
 in vec3 p3d_Tangent;
@@ -44,9 +45,10 @@ void main()
     
     gl_Position = p3d_ModelViewProjectionMatrix * matrix * vert;
     
-    uv=p3d_MultiTexCoord0.xy;
-    normal = gl_NormalMatrix * gl_Normal; 
-    tangent = gl_NormalMatrix * p3d_Tangent; 
-    binormal = gl_NormalMatrix* -p3d_Binormal;
+    uv=p3d_MultiTexCoord0.xy; 
+    mat3 normalMatrix=p3d_NormalMatrix*mat3(matrix);
+    normal = normalMatrix * p3d_Normal; 
+    tangent = normalMatrix * p3d_Tangent; 
+    binormal = normalMatrix* -p3d_Binormal;
     }    
 
