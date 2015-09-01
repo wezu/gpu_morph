@@ -32,5 +32,5 @@ void main()
         {       
        color += Light.diffuse * NdotL;          
        }      
-    gl_FragData[0]=vec4(color_map.rgb * color.rgb, color_map.a);
+    gl_FragColor=vec4(color_map.rgb * color.rgb, color_map.a);
     }
