@@ -52,6 +52,8 @@ render.setLight(dirLight)
 dirLight.setPos(base.camera.getPos())
 dirLight.setHpr(base.camera.getHpr())
 dirLight.wrtReparentTo(base.camera)
+render.setShaderInput("Light", dirLight)
+
 
 #add sliders
 slider1 = DirectSlider(range=(0.0,1.0), value=0.0, scale=0.5, pos=(0.0,0.0,-0.6), command=setWeight)
